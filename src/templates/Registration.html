@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/normalize.css" rel="stylesheet">
+    <link href="../static/css/skeleton.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body class="start">
+<div class="my_div">
+    <h4>Регистрация</h4>
+    <label for="login">Введите ФИО</label>
+    <input type="text" id="name" placeholder="Вася Пупкин" required onfocus="this.value=''"><br>
+    <label for="login">Введите логин</label>
+    <input type="text" id="login" placeholder="login" required onfocus="this.value = ''"><br>
+    <label for="login">Введите пароль</label>
+    <input type="text" id="pass" placeholder="password" required onfocus="this.value = ''"><br>
+    <label for="login">Введите номер телефона</label>
+    <input type="text" id="phone" placeholder="89990000000" required onfocus="this.value = ''"><br>
+    <button id="register" class="button-primary">&nbsp;&nbsp;&nbsp;Зарегистрироваться&nbsp;&nbsp;&nbsp;</button>
+    <a href="/login" class="button">&nbsp;&nbsp;&nbsp;У меня уже есть аккаунт&nbsp;&nbsp;&nbsp;</a>
+    <a href="/" class="button"> На главную </a>
+</div>
+</body>
+</html>
+
+<script>
+    $("#register").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/api/register',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                username: $('#login').val(),
+                password: $('#pass').val(),
+                name: $('#name').val(),
+                phone: $('#phone').val()
+            }),
+            success: function (response) {
+                window.location.replace('/')
+            }
+        });
+    });
+</script>

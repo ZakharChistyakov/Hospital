@@ -1,0 +1,42 @@
+<link href="../static/css/list-of-users.css" rel="stylesheet">
+
+<div id="list-of-users">
+    <table border="2">
+        <tr>
+            <th>Логин</th>
+            <th>ФИО</th>
+            <th>Работник</th>
+            <th>Администратор</th>
+            <th>Управление</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user['username'] }}</td>
+                <td>{{ user['name'] }}</td>
+                <td><input type="checkbox" id="{{ user['username'] }}-worker" {% if user['worker'] %}
+                           checked {% endif %}></td>
+                <td><input type="checkbox" id="{{ user['username'] }}-admin" {% if user['admin'] %}
+                           checked {% endif %}></td>
+                <td>
+                    <button class="button-primary save-button" value="{{ user['username'] }}">Сохранить</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<script>
+    $('.save-button').click(function (event) {
+        console.log(event.target.value);
+        $.ajax({
+            type: 'POST',
+            url: '/api/edit_flags',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                username: event.target.value,
+                worker: $('#' + event.target.value + '-worker').is(':checked'),
+                admin: $('#' + event.target.value + '-admin').is(':checked')
+            })
+        });
+    });
+</script>

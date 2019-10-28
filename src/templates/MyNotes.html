@@ -1,0 +1,31 @@
+<link href="../static/css/my_notes.css" rel="stylesheet">
+
+<div id="my-notes">
+    {% if customer %}
+        <button id="add" class="button-primary">Записаться</button>
+    {% endif %}
+    <table>
+        <tr>
+            <th>ФИО</th>
+            <th>Пол</th>
+            <th>Дата приема</th>
+            <th>Стоимость услуги</th>
+            <th>Описание услуги</th>
+        </tr>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note['fio'] }}</td>
+                <td>{{ note['sex'] }}</td>
+                <td>{{ note['date'] }}</td>
+                <td>{{ note['price'] }}</td>
+                <td>{{ note['description'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<script>
+    $('#add').click(function () {
+        setContent('/new_note');
+    });
+</script>

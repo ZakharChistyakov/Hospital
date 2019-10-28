@@ -1,0 +1,24 @@
+<div id="settings">
+    <label for="pass">Введите пароль</label>
+    <input type="password" id="pass" placeholder="password" required onfocus="this.value = ''"><br>
+    <label for="pass2">Введите пароль еще раз</label>
+    <input type="password" id="pass2" placeholder="password" required onfocus="this.value = ''"><br>
+    <label for="phone">Введите телефон</label>
+    <input type="text" id="phone" placeholder="89990000000" required onfocus="this.value = ''"><br>
+    <button id="save" class="button-primary">Сохранить</button>
+</div>
+
+<script>
+    $('#save').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/api/edit_profile',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                password: $('#pass').val(),
+                password2: $('#pass2').val(),
+                phone_number: $('#phone').val()
+            })
+        });
+    });
+</script>

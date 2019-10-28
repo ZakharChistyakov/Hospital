@@ -1,0 +1,12 @@
+<table border="2">
+    <tr>
+        <td>Название услуги</td>
+        <td>Цена р</td>
+    </tr>
+    {% for price in prices %}
+    <tr>
+        <td>{{ price['name'] }}</td>
+        <td>{{ price['price'] }}</td>
+    </tr>
+    {% endfor %}
+</table>

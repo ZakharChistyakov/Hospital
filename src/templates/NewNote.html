@@ -1,0 +1,53 @@
+<link href="../static/css/new_note.css" rel="stylesheet">
+
+<div id="new-note">
+    <div id="base-info">
+        <div class="base-info-tile">
+            <label for="fio">ФИО</label>
+            <input id="fio" type="text" placeholder="hgrihsf">
+        </div>
+        <div class="base-info-tile">
+            <label for="sex">Пол</label>
+            <input id="sex" type="text" placeholder="iuergfu">
+        </div>
+        <div class="base-info-tile">
+            <label for=passport>Паспорт</label>
+            <input id="passport" type="text" placeholder="4USBT53544LT26841">
+        </div>
+    </div>
+    <div id="more-info">
+        <label for="desc">Причина посещения</label>
+        <textarea id="desc" placeholder="Причина"></textarea>
+        <div>
+            <button id="save" class="button">Сохранить</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function getToday() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+    return mm + '.' + dd + '.' + yyyy;
+}
+
+$('#save').click(function () {
+    $.ajax({
+        type: 'POST',
+        url: '/api/note',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            fio: $('#fio').val(),
+            sex: $('#sex').val(),
+            passport: $('#passport').val(),
+            date: getToday(),
+            description: $('#desc').val()
+        }),
+        success: function () {
+            setContent('my_notes');
+        }
+    });
+})
+</script>

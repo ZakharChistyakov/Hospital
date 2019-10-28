@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../static/css/normalize.css" rel="stylesheet">
+    <link href="../static/css/skeleton.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body class="start">
+<div class="my_div">
+    <h4>Авторизация</h4>
+    <label for="login">Ваш логин</label>
+    <input class="my_div" type="text" placeholder="login" id="login">
+</div>
+<div class="my_div">
+    <label for="pass">Ваш пароль</label>
+    <input class="my_div" type="password" placeholder="password" id="pass">
+</div>
+<button class="button-primary" id="enter">&nbsp;&nbsp;&nbsp;Войти&nbsp;&nbsp;&nbsp;</button>
+<a href="/register" class="button">&nbsp;&nbsp;&nbsp;Зарегистрироваться&nbsp;&nbsp;&nbsp;</a>
+</body>
+</html>
+
+<script>
+    $("#enter").click(function() {
+       $.ajax({
+           type: 'POST',
+           url: '/api/login',
+           contentType: 'application/json',
+           data: JSON.stringify({username: $('#login').val(), password: $('#pass').val()}),
+           success: function(response) {
+               if (response[0].ok) {
+                   window.location.replace('/')
+               }
+           }
+       });
+    });
+</script>

@@ -1,0 +1,21 @@
+#base-info {
+    display: flex;
+}
+
+.base-info-tile {
+    margin: auto;
+}
+
+.base-info-tile label {
+    text-align-last: center;
+}
+
+#more-info {
+    margin-top: 50px;
+}
+
+#more-info > textarea {
+    width: 100%;
+    height: 200px;
+    resize: none;
+}

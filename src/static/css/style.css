@@ -1,0 +1,20 @@
+body.start {
+    margin: 39%;
+    margin-top: 5%;
+    margin-bottom: auto;
+}
+
+body {
+    margin: 10%;
+    margin-top: 5%;
+}
+
+body.acc {
+    margin: 35%;
+    margin-top: 5%;
+    margin-bottom: auto;
+}
+
+div.my_div {
+    padding: auto;
+}

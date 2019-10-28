@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Стоматологическая клиника</title>
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/normalize.css" rel="stylesheet">
+    <link href="../static/css/skeleton.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="menu-container">
+        <ul class="menu-list">
+            {% if logged_in %}
+                <li>
+                    <a class="button" id="menu-my-notes">Мои записи</a>
+                </li>
+                <li>
+                    <a class="button" id="menu-settings">Настройки</a>
+                </li>
+                <li>
+                    <a class="button" id="menu-logout">Выход</a>
+                </li>
+            {% endif %}
+            {% if worker %}
+                <li>
+                    <a class="button" id="menu-my-work">Мои пациенты</a>
+                </li>
+            {% endif %}
+            {% if admin %}
+                <li>
+                    <a class="button" id="menu-user-list">Список пользователей</a>
+                </li>
+                <li>
+                    <a class="button" id="menu-all-notes">Все текущие пациенты</a>
+                </li>
+            {% endif %}
+            <li>
+                <a class="button" id="menu-price-list">Прайс-лист</a>
+            </li>
+            <li>
+                <a class="button" id="menu-about">О нас</a>
+            </li>
+            {% if not logged_in %}
+                <li>
+                    <a href="/register" class="button">Зарегистрироваться</a>
+                </li>
+                <li>
+                    <a href="/login" class="button">Войти</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div id="content-container">
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        setContent('/about');
+    });
+
+    function setContent(pageURI) {
+        $.get(pageURI, function (response) {
+            $('#content-container').html(response);
+        });
+    }
+
+    $('#menu-logout').click(function () {
+        $.post('api/logout', function () {
+            window.location.replace('/');
+        });
+    });
+
+    // Button interactivity
+    $('#menu-about').click(function () {
+        setContent('about');
+    });
+    $('#menu-price-list').click(function () {
+        setContent('price');
+    });
+    $('#menu-my-notes').click(function () {
+        setContent('my_notes');
+    });
+    $('#menu-settings').click(function () {
+        setContent('settings');
+    });
+    $('#menu-user-list').click(function () {
+        setContent('users');
+    });
+    $('#menu-my-work').click(function () {
+        setContent('my_work');
+    });
+    $('#menu-all-notes').click(function () {
+        setContent('all_notes');
+    });
+</script>

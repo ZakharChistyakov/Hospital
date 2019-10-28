@@ -1,0 +1,11 @@
+#list-of-users table {
+    width: 100%;
+}
+
+#list-of-users {
+    text-align: center;
+}
+
+#list-of-users th, td {
+    text-align: center;
+}

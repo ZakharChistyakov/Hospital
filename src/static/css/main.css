@@ -1,0 +1,29 @@
+#main {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#menu-container {
+    display: inline-block;
+}
+
+#content-container {
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 100%;
+    text-align: left;
+}
+
+#menu-container .menu-list {
+    list-style-type: none;
+}
+
+#menu-container .button {
+    width: 200px;
+}

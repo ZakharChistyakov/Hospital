@@ -1,0 +1,15 @@
+#my-notes > {
+    width: 100%;
+}
+
+#my-notes table {
+    border: 2px black;
+}
+
+th, td {
+    text-align: center;
+}
+
+#id {
+    width: 100%;
+}
