@@ -5,9 +5,9 @@
 
 Над проектом работает: студент ФКН 3 курс 4 группа Чистяков Захар
 
-Trello: https://miro.com/app/board/o9J_kwIfIus=/
+Miro: https://miro.com/app/board/o9J_kwIfIus=/
 
-Miro: https://trello.com/b/aRAmvhlC/hospitality
+Trello: https://trello.com/b/aRAmvhlC/hospitality
 
 Курсовая: https://drive.google.com/open?id=14Pdc6krHUd1IAM1xUHz4MCj8buq0hx0V
 
